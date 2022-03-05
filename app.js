@@ -159,9 +159,94 @@ bot.start(ctx => {
 })
 
 
+const wScene = new WizardScene('w-s',
+
+(ctx) => {
+
+    ctx.telegram.sendMessage(ctx.chat.id, `<b>Wallet Address:</b> \n\nKindly enter your AMDG Token Wallet Address`, {
+        reply_markup: {
+            remove_keyboard: true
+        },
+        parse_mode: "HTML"
+    }).catch((e) => console.log(e))
+
+    return ctx.wizard.next()
+
+},
+
+(ctx)=>{
+    const data = userModel.find({
+        userId: ctx.from.id
+    })
+    
+    
+    
+    data.then((data) => {
+    
+        const user_data = data[0]
+    
+        const user_balance = parseFloat(user_data.balance)
+    
+        if (user_balance > 0) {
+    
+            const withdrawData = new withdrawlModel({
+                userId: ctx.from.id,
+                name: user_data.name,
+                withdrawl_balance: user_data.balance,
+                wallet: ctx.update.message.text
+            })
+    
+            const data2 = withdrawData.save()
+    
+            data2.then((data) => {
+    
+                const data3 = userModel.updateOne({
+                    userId: ctx.from.id
+                }, {
+                    balance: 0
+                })
+    
+                data3.then((data) => {
+    
+                    ctx.telegram.sendMessage(ctx.chat.id, `Your withdraw request has been sucessfully submited`, {
+                        reply_markup: {
+                            keyboard: [
+                                [{
+                                    text: "Back"
+                                }]
+                            ],
+                            resize_keyboard: true
+                        }
+                    }).catch((e) => console.log(e))
+    
+                }).catch((e) => console.log('Balance Update: Something is wrong'))
+    
+            }).catch((e) => console.log('Balance : Something is wrong'))
+    
+        } else {
+    
+            ctx.telegram.sendMessage(ctx.chat.id, `Sorry, you have not enough balance.`, {
+                reply_markup: {
+                    keyboard: [
+                        [{
+                            text: "Back"
+                        }]
+                    ],
+                    resize_keyboard: true
+                }
+            }).catch((e) => console.log(e))
+        }
+    
+    }).catch((e) => console.log('Withdrawl request: Something is wrong'))
+    
+    return ctx.scene.leave()
+}
 
 
-const stage = new Stage([userWizard])
+
+)
+
+const stage = new Stage([userWizard,wScene])
 
 bot.use(stage.middleware())
 
@@ -201,71 +286,7 @@ bot.hears("Withdraw", ctx => {
 
 
 
-bot.hears('Withdraw Request', ctx => {
-
-    const data = userModel.find({
-        userId: ctx.from.id
-    })
-
-    data.then((data) => {
-
-        const user_data = data[0]
-
-        const user_balance = parseFloat(user_data.balance)
-
-        if (user_balance > 0) {
-
-            const withdrawData = new withdrawlModel({
-                userId: ctx.from.id,
-                name: user_data.name,
-                withdrawl_balance: user_data.balance,
-                wallet: user_data.wallet
-            })
-
-            const data2 = withdrawData.save()
-
-            data2.then((data) => {
-
-                const data3 = userModel.updateOne({
-                    userId: ctx.from.id
-                }, {
-                    balance: 0
-                })
-
-                data3.then((data) => {
-
-                    ctx.telegram.sendMessage(ctx.chat.id, `Your withdraw request has been sucessfully submited`, {
-                        reply_markup: {
-                            keyboard: [
-                                [{
-                                    text: "Back"
-                                }]
-                            ],
-                            resize_keyboard: true
-                        }
-                    }).catch((e) => console.log(e))
-
-                }).catch((e) => console.log('Balance Update: Something is wrong'))
-
-            }).catch((e) => console.log('Balance : Something is wrong'))
-
-        } else {
-
-            ctx.telegram.sendMessage(ctx.chat.id, `Sorry, you have not enough balance.`, {
-                reply_markup: {
-                    keyboard: [
-                        [{
-                            text: "Back"
-                        }]
-                    ],
-                    resize_keyboard: true
-                }
-            }).catch((e) => console.log(e))
-        }
-
-    }).catch((e) => console.log('Withdrawl request: Something is wrong'))
-
-})
+bot.hears('Withdraw Request',Stage.enter('w-s'))
 
 
 bot.hears("My account", ctx => {
