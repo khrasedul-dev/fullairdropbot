@@ -40,14 +40,9 @@ const userWizard = new WizardScene('user-wizard',
 
     ctx.session.user.phone = ctx.update.message.contact.phone_number
 
-      ctx.telegram.sendMessage(ctx.chat.id, `<b>Task 1:</b> \n\n1. Kindly join our <a href="https://t.me/amdg_global">Telegram group</a> \n2. Join our <a href="https://t.me/AMDGCommunityID">Telegram community</a> \n\nThen tap on button next`, {
+      ctx.telegram.sendMessage(ctx.chat.id, `<b>Task 1:</b> \n\n Join our <a href="https://t.me/amdg_global">Telegram group</a> and Join our <a href="https://t.me/AMDGCommunityID">Telegram community</a> \n\nSubmit your telegram username ( Example: @amdgtoken )`, {
           reply_markup: {
-              keyboard: [
-                  [{
-                      text: "Next"
-                  }]
-              ],
-              resize_keyboard: true
+              remove_keyboard: true
           },
           parse_mode: "HTML"
       }).catch((e) => console.log(e))
@@ -56,15 +51,10 @@ const userWizard = new WizardScene('user-wizard',
   },
 
   (ctx) => {
-
-      ctx.telegram.sendMessage(ctx.chat.id, `<b>Task 2:</b> \n\n1. Join our <a href="https://www.facebook.com/AssetsManagementDigitalGroup/">Facebook page</a> \n\nThen tap on button next`, {
+    ctx.session.user.tl = ctx.update.message.text
+      ctx.telegram.sendMessage(ctx.chat.id, `<b>Task 2:</b> \n\nJoin our <a href="https://www.facebook.com/AssetsManagementDigitalGroup/">Facebook page</a> \n\nSubmit your facebook name ( Example: Bill Gates )`, {
           reply_markup: {
-              keyboard: [
-                  [{
-                      text: "Next"
-                  }]
-              ],
-              resize_keyboard: true
+            remove_keyboard: true
           },
           parse_mode: "HTML"
       }).catch((e) => console.log(e))
@@ -76,14 +66,11 @@ const userWizard = new WizardScene('user-wizard',
 
   (ctx) => {
 
-      ctx.telegram.sendMessage(ctx.chat.id, `<b>Task 3:</b> \n\n1. Follow our <a href="https://twitter.com/amdgsolutions">Twitter</a> \n2. Retweet a post  \n\nThen tap on button next`, {
+    ctx.session.user.fb = ctx.update.message.text
+
+      ctx.telegram.sendMessage(ctx.chat.id, `<b>Task 3:</b> \n\nFollow our <a href="https://twitter.com/amdgsolutions">Twitter</a> and Retweet a post  \n\nSubmit your twitter username ( Example: @amdgtoken )`, {
           reply_markup: {
-              keyboard: [
-                  [{
-                      text: "Next"
-                  }]
-              ],
-              resize_keyboard: true
+            remove_keyboard: true
           },
           parse_mode: "HTML"
       }).catch((e) => console.log(e))
@@ -92,15 +79,11 @@ const userWizard = new WizardScene('user-wizard',
 
   },
   (ctx) => {
+    ctx.session.user.tw = ctx.update.message.text
 
-      ctx.telegram.sendMessage(ctx.chat.id, `<b>Task 4:</b> \n\n1. Follow on <a href="https://www.instagram.com/accounts/login/?next=/amdgsolutions/">Instagram</a> \n2. Comment in any post  \n\nThen tap on button next`, {
+      ctx.telegram.sendMessage(ctx.chat.id, `<b>Task 4:</b> \n\nFollow our <a href="https://www.instagram.com/accounts/login/?next=/amdgsolutions/">Instagram</a> and submit your Instagram username ( Example: amdgtoken )`, {
           reply_markup: {
-              keyboard: [
-                  [{
-                      text: "Next"
-                  }]
-              ],
-              resize_keyboard: true
+            remove_keyboard: true
           },
           parse_mode: "HTML"
       }).catch((e) => console.log(e))
@@ -110,15 +93,11 @@ const userWizard = new WizardScene('user-wizard',
   },
 
   (ctx) => {
+    ctx.session.user.in = ctx.update.message.text
 
-      ctx.telegram.sendMessage(ctx.chat.id, `<b>Task 5:</b>\n\n1. Follow on <a href="https://www.tiktok.com/@amdgsolutions">Tiktok</a> \n2. Comment in any post  \n\nThen tap on button next`, {
+      ctx.telegram.sendMessage(ctx.chat.id, `<b>Task 5:</b>\n\nFollow on <a href="https://www.tiktok.com/@amdgsolutions">Tiktok</a> and Like, Comment in any post  \n\nSubmit your Tiktok username ( Example: @amdgtoken )`, {
           reply_markup: {
-              keyboard: [
-                  [{
-                      text: "Next"
-                  }]
-              ],
-              resize_keyboard: true
+            remove_keyboard: true
           },
           parse_mode: "HTML"
       }).catch((e) => console.log(e))
@@ -129,15 +108,11 @@ const userWizard = new WizardScene('user-wizard',
 
 
   (ctx) => {
+    ctx.session.user.tk = ctx.update.message.text
 
-      ctx.telegram.sendMessage(ctx.chat.id, `<b>Task 6:</b> \n\n1. Subscribe on <a href="https://www.youtube.com/channel/UCLwQjrb14p0VBgqw9raxmPA">Youtube</a> \n2. Comment in any videos  \n\nThen tap on button next`, {
+      ctx.telegram.sendMessage(ctx.chat.id, `<b>Task 6:</b> \n\nSubscribe on <a href="https://www.youtube.com/channel/UCLwQjrb14p0VBgqw9raxmPA">Youtube</a> and Comment in any videos  \n\nSubmit your youtube name ( Example: Bill gates )`, {
           reply_markup: {
-              keyboard: [
-                  [{
-                      text: "Next"
-                  }]
-              ],
-              resize_keyboard: true
+            remove_keyboard: true
           },
           parse_mode: "HTML"
       }).catch((e) => console.log(e))
@@ -147,15 +122,11 @@ const userWizard = new WizardScene('user-wizard',
   },
 
   (ctx) => {
+    ctx.session.user.yt = ctx.update.message.text
 
-      ctx.telegram.sendMessage(ctx.chat.id, `<b>Task 7:</b> \n\n1. Follow use on <a href="https://www.linkedin.com/company/assetmanagementdigitalgroup/">Linkedin</a> \n\nThen tap on button next`, {
+      ctx.telegram.sendMessage(ctx.chat.id, `<b>Task 7:</b> \n\nPlease like in any post on our <a href="https://www.linkedin.com/company/assetmanagementdigitalgroup/">Linkedin</a> \n\nSubmit your Linkedin name ( Example: Bill gates )`, {
           reply_markup: {
-              keyboard: [
-                  [{
-                      text: "Next"
-                  }]
-              ],
-              resize_keyboard: true
+            remove_keyboard: true
           },
           parse_mode: "HTML"
       }).catch((e) => console.log(e))
@@ -164,10 +135,8 @@ const userWizard = new WizardScene('user-wizard',
 
   },
 
-
   (ctx) => {
-
-
+    ctx.session.user.linke = ctx.update.message.text
 
       userModel.find({
           userId: ctx.from.id
@@ -191,7 +160,14 @@ const userWizard = new WizardScene('user-wizard',
                               balance: join_bonus,
                               phone: ctx.session.user.phone,
                               ref_link: "https://t.me/" + ctx.botInfo.username + "?start=" + ctx.from.id,
-                              referralCount: 0
+                              referralCount: 0,
+                              linkedin_name : ctx.session.user.linke,
+                            youtube_name : ctx.session.user.yt,
+                            tiktok_username : ctx.session.user.tk,
+                            instagram_name : ctx.session.user.in,
+                            twitter_username : ctx.session.user.tw,
+                            facebook_name : ctx.session.user.fb,
+                            telegram_username : ctx.session.user.tl,
                           }
 
 
@@ -249,7 +225,14 @@ const userWizard = new WizardScene('user-wizard',
                               balance: join_bonus,
                               phone: ctx.session.user.phone,
                               ref_link: "https://t.me/" + ctx.botInfo.username + "?start=" + ctx.from.id,
-                              referralCount: 0
+                              referralCount: 0,
+                              linkedin_name : ctx.session.user.linke,
+                            youtube_name : ctx.session.user.yt,
+                            tiktok_username : ctx.session.user.tk,
+                            instagram_name : ctx.session.user.in,
+                            twitter_username : ctx.session.user.tw,
+                            facebook_name : ctx.session.user.fb,
+                            telegram_username : ctx.session.user.tl,
                           })
 
 
@@ -264,14 +247,16 @@ const userWizard = new WizardScene('user-wizard',
       })
 
 
-      ctx.telegram.sendMessage(ctx.chat.id, `Your information: \nName: ${ctx.from.first_name} \nWallet address: ${ctx.update.message.text} \n\nThen tap on submit button`, {
+      ctx.telegram.sendMessage(ctx.chat.id, `<b>Task 8:</b> \n\nDownload AM-Wallet
+
+      📱 AM-Wallet Android
+      📱 AM-Wallet iOs
+      
+      Click " Submit " Button to continue!`, {
           reply_markup: {
-              keyboard: [
-                  [{
-                      text: "Submit"
-                  }]
-              ],
-              resize_keyboard: true
+            keyboard: [
+                [{text: "☑️ Submit My Details ☑️"}]
+            ]
           },
           parse_mode: "HTML"
       }).catch((e) => console.log(e))
@@ -281,7 +266,16 @@ const userWizard = new WizardScene('user-wizard',
 
   (ctx) => {
 
-      ctx.telegram.sendMessage(ctx.chat.id, `Congratulation your account has been created  \n\n <b>Go to home /start</b> \n\nAccount Info: \nUser ID: ${ctx.from.id} \nName: ${ctx.from.first_name} \n\nReferrel link: \nhttps://t.me/${ctx.botInfo.username}?start=${ctx.from.id} `, {
+      ctx.telegram.sendMessage(ctx.chat.id, `Congratulation your account has been created  
+
+      Go to home /start 
+      
+      Account Info: 
+      User ID: ${ctx.from.id}
+      Name: ${ctx.from.first_name} 
+      
+      Referrel link: 
+      https://t.me/${ctx.botInfo.username}?start=${ctx.from.id} `, {
 
           reply_markup: {
               remove_keyboard: true

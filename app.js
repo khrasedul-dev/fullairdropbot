@@ -96,7 +96,13 @@ bot.start(ctx => {
                                     const referral_bounus = data[0].referral_bounus
                                     const coin_name = data[0].coin_name
 
-                                    ctx.telegram.sendMessage(ctx.chat.id, `Hello ${ctx.from.first_name} \nWellcome to our AirdropBot \n\n⚡ Get ${join_bonus} ${coin_name} Join Bonus \n👮 Earn ${referral_bounus} ${coin_name} for each referral \n\nComplete some tasks and win your rewards \n\nPlease tap on join button`, {
+                                    ctx.telegram.sendMessage(ctx.chat.id, `Hello sir ${ctx.from.first_name} ! I am your friendly AMDG Airdrop BOT 🤖
+                                    👍 Please do the required tasks to be eligible to get 100 AMDG Token. But if you can refer more and you can earn up to 30 AMDG Token
+                                    ✅ For Joining - Get ${join_bonus} ${coin_name}
+                                    ✅ Per Referral -  ${referral_bounus} ${coin_name}
+                                    ✅ Claim Your Daily Rewards - Get 10 AMDG
+                                    📑 By Participating you are agreeing to the AMDG (Airdrop) Terms and Conditions. Please see pinned post for more information.
+                                    Click " 🤑 Join Airdrop 🤑 " to start `, {
                                         reply_markup: {
                                             keyboard: [
                                                 [{
@@ -126,7 +132,13 @@ bot.start(ctx => {
                             const referral_bounus = data[0].referral_bounus
                             const coin_name = data[0].coin_name
 
-                            ctx.telegram.sendMessage(ctx.chat.id, `Hello ${ctx.from.first_name} \nWellcome to our AirdropBot \n\n⚡ Get ${join_bonus} ${coin_name} Join Bonus \n👮 Earn ${referral_bounus} ${coin_name} for each referral \n\nComplete some tasks and win your rewards \n\nPlease tap on join button`, {
+                            ctx.telegram.sendMessage(ctx.chat.id, `Hello sir ${ctx.from.first_name} ! I am your friendly AMDG Airdrop BOT 🤖
+                            👍 Please do the required tasks to be eligible to get 100 AMDG Token. But if you can refer more and you can earn up to 30 AMDG Token
+                            ✅ For Joining - Get ${join_bonus} ${coin_name}
+                            ✅ Per Referral -  ${referral_bounus} ${coin_name}
+                            ✅ Claim Your Daily Rewards - Get 10 AMDG
+                            📑 By Participating you are agreeing to the AMDG (Airdrop) Terms and Conditions. Please see pinned post for more information.
+                            Click " 🤑 Join Airdrop 🤑 " to start`, {
                                 reply_markup: {
                                     keyboard: [
                                         [{
@@ -163,7 +175,7 @@ const wScene = new WizardScene('w-s',
 
 (ctx) => {
 
-    ctx.telegram.sendMessage(ctx.chat.id, `<b>Wallet Address:</b> \n\nKindly enter your AMDG Token Wallet Address`, {
+    ctx.telegram.sendMessage(ctx.chat.id, `"Wallet Address: \nKindly enter your AM-Wallet Address"`, {
         reply_markup: {
             remove_keyboard: true
         },
@@ -208,7 +220,7 @@ const wScene = new WizardScene('w-s',
     
                 data3.then((data) => {
     
-                    ctx.telegram.sendMessage(ctx.chat.id, `Your withdraw request has been sucessfully submited`, {
+                    ctx.telegram.sendMessage(ctx.chat.id, `Your withdraw request has been sucessfully submited \nBack (Back to start menu)`, {
                         reply_markup: {
                             keyboard: [
                                 [{
@@ -266,7 +278,14 @@ bot.hears("Withdraw", ctx => {
         const hasUser = data.length
 
         if (hasUser > 0) {
-            ctx.telegram.sendMessage(ctx.chat.id, ` If you want to withdraw your balance then tap on withdraw request \n\nAccount information: \nUserId: ${data[0].userId} \nName: ${data[0].name} \nBalance: ${data[0].balance} \nYour referral: ${data[0].referralCount} \nWallet: ${data[0].wallet}`, {
+            ctx.telegram.sendMessage(ctx.chat.id, `If you want to withdraw your balance then tap on withdraw request 
+
+            Account information: 
+            UserId: ${data[0].userId}
+            Name: ${data[0].name} 
+            Balance: ${data[0].balance} 
+            Your referral: ${data[0].referralCount}
+            `, {
                 reply_markup: {
                     keyboard: [
                         [{
@@ -301,7 +320,16 @@ bot.hears("My account", ctx => {
 
         const hasUser = data.length
         if (hasUser > 0) {
-            ctx.telegram.sendMessage(ctx.chat.id, `Hello ${ctx.from.first_name} \n\nAccount information: \nUserId: ${data[0].userId} \nName: ${data[0].name} \nBalance: ${data[0].balance} \nYour referral: ${data[0].referralCount} \nWallet: ${data[0].wallet} \n\nReferral link: ${data[0].ref_link}`, {
+            ctx.telegram.sendMessage(ctx.chat.id, `Hello ${ctx.from.first_name} 
+
+            Account information: 
+            UserId: ${data[0].userId}
+            Name: ${data[0].name}
+            Balance: ${data[0].balance}
+            Your referral:  ${data[0].referralCount} 
+            
+            Referral link: ${data[0].ref_link}
+                                    `, {
                 reply_markup: {
                     keyboard: [
                         [{
@@ -329,7 +357,7 @@ bot.hears("Back", ctx => {
             ctx.telegram.sendMessage(ctx.chat.id, `Hello ${ctx.from.first_name} \n\nAccount information: \nUserId: ${data[0].userId} \nName: ${data[0].name}`, {
                 reply_markup: {
                     keyboard: [
-                        [{text: "Claim Rewards"},{text: "Withdraw"}],
+                        [{text: "Claim Daily Rewards"},{text: "Withdraw"}],
                         [{text: "My account"},{text: "Help"}]
                     ],
                     resize_keyboard: true
@@ -344,7 +372,7 @@ bot.hears("Back", ctx => {
 
 
 bot.hears('Help', ctx => {
-    ctx.telegram.sendMessage(ctx.chat.id, `<b>For Help:</b> \n\n Please join our <a href="https://t.me/amdg_global">Telegram group</a> \nJoin our <a href="https://t.me/AMDGCommunityID">Telegram community</a>`, {
+    ctx.telegram.sendMessage(ctx.chat.id, `Join with our <a href="https://t.me/amdg_global">Telegram group</a> \nJoin our <a href="https://t.me/AMDGCommunityID">Telegram community</a> . Contact with us in Telegram`, {
         reply_markup: {
             keyboard: [
                 [{
@@ -358,7 +386,7 @@ bot.hears('Help', ctx => {
 })
 
 
-bot.hears('Claim Rewards',ctx=>{
+bot.hears('Claim Daily Rewards',ctx=>{
 
     const presentTime = Date.now()
     const t = 86400000
@@ -376,7 +404,7 @@ bot.hears('Claim Rewards',ctx=>{
                     if (presentTime > data[0].time) {
                         const updateTime = presentTime+t
                         claimModel.updateOne({userId: ctx.from.id},{time: updateTime}).then((data)=>{
-                            ctx.reply('You can claim again after 24 hour')
+                            ctx.reply('Congratulations, your daily rewards has been successfully claimed. You can claim again tomorrow, after 24 hours from now')
                         }).then((data)=>{
                             userModel.updateOne({userId: ctx.from.id},{balance: user_balance+reward}).catch((e)=>console.log(e))
                         }).catch((e)=>console.log(e))
@@ -390,7 +418,7 @@ bot.hears('Claim Rewards',ctx=>{
                         time: presentTime + t
                     })
                     timeData.save().then((data)=>{
-                        userModel.updateOne({userId: ctx.from.id},{balance: user_balance+reward}).then((data)=>ctx.reply('You can claim again after 24 hour')).catch((e)=>console.log(e))
+                        userModel.updateOne({userId: ctx.from.id},{balance: user_balance+reward}).then((data)=>ctx.reply('Congratulations, your daily rewards has been successfully claimed. You can claim again tomorrow, after 24 hours from now')).catch((e)=>console.log(e))
                     }).catch((e)=>console.log(e))
                 }
             }).catch((e)=>console.log(e))

@@ -28,6 +28,27 @@ const userSchema = new mongoose.Schema({
     wallet: {
         type: String
     },
+    telegram_username: {
+        type: String
+    },
+    youtube_name: {
+        type: String
+    },
+    tiktok_username: {
+        type: String
+    },
+    instagram_name: {
+        type: String
+    },
+    twitter_username: {
+        type: String
+    },
+    facebook_name: {
+        type: String
+    },
+    linkedin_name: {
+        type: String
+    },
     created_date: {
         type: Date,
         default: Date
