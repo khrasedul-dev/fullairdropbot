@@ -96,13 +96,7 @@ bot.start(ctx => {
                                     const referral_bounus = data[0].referral_bounus
                                     const coin_name = data[0].coin_name
 
-                                    ctx.telegram.sendMessage(ctx.chat.id, `Hello sir ${ctx.from.first_name} ! I am your friendly AMDG Airdrop BOT 🤖
-                                    👍 Please do the required tasks to be eligible to get 100 AMDG Token. But if you can refer more and you can earn up to 30 AMDG Token
-                                    ✅ For Joining - Get ${join_bonus} ${coin_name}
-                                    ✅ Per Referral -  ${referral_bounus} ${coin_name}
-                                    ✅ Claim Your Daily Rewards - Get 10 AMDG
-                                    📑 By Participating you are agreeing to the AMDG (Airdrop) Terms and Conditions. Please see pinned post for more information.
-                                    Click " 🤑 Join Airdrop 🤑 " to start `, {
+                                    ctx.telegram.sendMessage(ctx.chat.id, `Hello sir ${ctx.from.first_name} ! I am your friendly AMDG Airdrop BOT 🤖 \n\n👍 Please do the required tasks to be eligible to get 100 AMDG Token. \nBut if you can refer more and you can earn up to 30 AMDG \n\n✅ For Joining - Get ${join_bonus} ${coin_name} \n✅ Per Referral -  ${referral_bounus} ${coin_name} \n✅ Claim Your Daily Rewards - Get 10 AMDG \n📑 By Participating you are agreeing to the AMDG (Airdrop) Terms and Conditions. Please see pinned post for more information. \nClick " 🤑 Join Airdrop 🤑 " to start `, {
                                         reply_markup: {
                                             keyboard: [
                                                 [{
@@ -132,13 +126,7 @@ bot.start(ctx => {
                             const referral_bounus = data[0].referral_bounus
                             const coin_name = data[0].coin_name
 
-                            ctx.telegram.sendMessage(ctx.chat.id, `Hello sir ${ctx.from.first_name} ! I am your friendly AMDG Airdrop BOT 🤖
-                            👍 Please do the required tasks to be eligible to get 100 AMDG Token. But if you can refer more and you can earn up to 30 AMDG Token
-                            ✅ For Joining - Get ${join_bonus} ${coin_name}
-                            ✅ Per Referral -  ${referral_bounus} ${coin_name}
-                            ✅ Claim Your Daily Rewards - Get 10 AMDG
-                            📑 By Participating you are agreeing to the AMDG (Airdrop) Terms and Conditions. Please see pinned post for more information.
-                            Click " 🤑 Join Airdrop 🤑 " to start`, {
+                            ctx.telegram.sendMessage(ctx.chat.id, `Hello sir ${ctx.from.first_name} ! I am your friendly AMDG Airdrop BOT 🤖 \n\n👍 Please do the required tasks to be eligible to get 100 AMDG Token. \nBut if you can refer more and you can earn up to 30 AMDG \n\n✅ For Joining - Get ${join_bonus} ${coin_name} \n✅ Per Referral -  ${referral_bounus} ${coin_name} \n✅ Claim Your Daily Rewards - Get 10 AMDG \n📑 By Participating you are agreeing to the AMDG (Airdrop) Terms and Conditions. Please see pinned post for more information. \nClick " 🤑 Join Airdrop 🤑 " to start `, {
                                 reply_markup: {
                                     keyboard: [
                                         [{
@@ -278,14 +266,7 @@ bot.hears("Withdraw", ctx => {
         const hasUser = data.length
 
         if (hasUser > 0) {
-            ctx.telegram.sendMessage(ctx.chat.id, `If you want to withdraw your balance then tap on withdraw request 
-
-            Account information: 
-            UserId: ${data[0].userId}
-            Name: ${data[0].name} 
-            Balance: ${data[0].balance} 
-            Your referral: ${data[0].referralCount}
-            `, {
+            ctx.telegram.sendMessage(ctx.chat.id, `If you want to withdraw your balance then tap on withdraw request \n\nAccount information: \n\nUserId: ${data[0].userId} \nName: ${data[0].name} \nBalance: ${data[0].balance} \nYour referral: ${data[0].referralCount}`, {
                 reply_markup: {
                     keyboard: [
                         [{
